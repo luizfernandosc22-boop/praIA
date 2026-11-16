@@ -1,0 +1,13 @@
+{
+  "name": "praIA — comunidade ecana",
+  "short_name": "praIA",
+  "description": "Créditos cooperativos e agenda da Prainha, ECA-USP.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F4E3",
+  "theme_color": "#2E2156",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "/marca/icone.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
