@@ -5,7 +5,7 @@ import {
   Gift, Award, Calendar, CheckCircle2, Lock, ShieldAlert, X, Phone, Send,
   EyeOff, AlertTriangle, GraduationCap, Camera, Image as ImageIcon, Plus,
   CalendarPlus, Megaphone, QrCode, Clock, ShieldCheck, Heart, ArrowLeft,
-  Inbox, Sparkles, Instagram, Search,
+  Inbox, Sparkles, Instagram, Search, Briefcase,
 } from "lucide-react";
 
 const CSS = `
@@ -63,12 +63,42 @@ const TABS = [
 ];
 
 const ESPACOS = [
-  { id: "praca", nome: "Praça Coberta", area: "352 m²", validador: "Léo (Canil)" },
-  { id: "auditorio", nome: "Auditório", area: "131 m²", validador: "Sam (CALC)" },
-  { id: "estudio", nome: "Estúdio Áudio/Vídeo", area: "27 m²", validador: "Ana (Com Jr)" },
-  { id: "convivencia", nome: "Convivência Estudos", area: "106 m²", validador: "Bia (ECAtlética)" },
-  { id: "agencias", nome: "Salas de Agências", area: "11 salas", validador: "Rafa (ECA Jr)" },
-  { id: "cafe", nome: "Café / Lanchonete", area: "26 m²", validador: "Duda (Bateréca)" },
+  {
+    id: "praca", nome: "Praça Coberta", area: "352 m²", validador: "Léo (Canil)",
+    foto: "/fotos/coletivo.jpg", cor: "bg-amber-400", corTexto: "text-purple-800",
+    resumo: "O maior espaço da Prainha. Festas, shows, feiras e assembleia.",
+    capacidade: "até 400 pessoas", som: true, cobertura: "coberta",
+  },
+  {
+    id: "auditorio", nome: "Auditório", area: "131 m²", validador: "Sam (CALC)",
+    foto: "/fotos/sinal.jpg", cor: "bg-purple-400", corTexto: "text-creme",
+    resumo: "Dois módulos que viram um só. Mesas, palestras e mostras.",
+    capacidade: "120 sentados", som: true, cobertura: "fechada",
+  },
+  {
+    id: "estudio", nome: "Estúdio Áudio/Vídeo", area: "27 m²", validador: "Ana (Com Jr)",
+    foto: "/fotos/proj.jpg", cor: "bg-purple-800", corTexto: "text-creme",
+    resumo: "Gravação, edição e cobertura. Três salas de edição ao lado.",
+    capacidade: "6 pessoas", som: true, cobertura: "tratada",
+  },
+  {
+    id: "convivencia", nome: "Convivência Estudos", area: "106 m²", validador: "Bia (ECAtlética)",
+    foto: "/fotos/trio.jpg", cor: "bg-creme", corTexto: "text-purple-800",
+    resumo: "Mesas grandes para estudar junto, reuniões e clubes.",
+    capacidade: "60 pessoas", som: false, cobertura: "fechada",
+  },
+  {
+    id: "agencias", nome: "Salas de Agências", area: "11 salas", validador: "Rafa (ECA Jr)",
+    foto: "/fotos/turma.jpg", cor: "bg-purple-400", corTexto: "text-creme",
+    resumo: "Base das juniores e dos coletivos. Uma sala por projeto.",
+    capacidade: "8 por sala", som: false, cobertura: "fechada",
+  },
+  {
+    id: "cafe", nome: "Café / Lanchonete", area: "26 m²", validador: "Duda (Bateréca)",
+    foto: "/fotos/globo.jpg", cor: "bg-amber-400", corTexto: "text-purple-800",
+    resumo: "Balcão, preparo e depósito. Ponto de resgate do Mercado.",
+    capacidade: "fila de balcão", som: false, cobertura: "coberta",
+  },
 ];
 
 const CATEGORIAS = [
@@ -124,6 +154,40 @@ const CATALOGO = [
   { id: "viagem", camada: "Item pesado", tone: "purple", nome: "Pacote de viagem", preco: 980, entidade: "Comissão de Pontos", vagas: 3, pesado: true },
 ];
 
+// Balcão de Serviços: trabalho remunerado em dinheiro, entre estudantes e
+// quem contrata. É um mural de anúncios — o praIA não intermedeia pagamento.
+const AREAS_SERVICO = [
+  "Fotografia", "Vídeo", "Edição", "Técnico de som", "Iluminação",
+  "Design gráfico", "Social media", "Redação", "Ilustração",
+  "Locução", "Produção", "Assessoria de imprensa",
+];
+
+const SERVICOS_EXEMPLO = [
+  {
+    id: "s1", tipo: "oferta", area: "Fotografia", titulo: "Cobertura fotográfica de festa e evento",
+    pessoa: "Ana L.", entidade: "Jornalismo Jr", valor: "R$ 250 por evento",
+    detalhe: "Cobertura de até 4h, entrega de 60 fotos tratadas em 5 dias. Equipamento próprio.",
+    portfolio: "ana.fotografa",
+  },
+  {
+    id: "s2", tipo: "oferta", area: "Técnico de som", titulo: "Operação de som para shows na Prainha",
+    pessoa: "Théo M.", entidade: "Canil", valor: "R$ 180 por diária",
+    detalhe: "Montagem, passagem e operação. Já trabalhei nas últimas quatro edições da QiB.",
+    portfolio: "theo.som",
+  },
+  {
+    id: "s3", tipo: "procura", area: "Vídeo", titulo: "Procuro videomaker para aftermovie",
+    pessoa: "Bia R.", entidade: "ECAtlética", valor: "R$ 400 fechado",
+    detalhe: "Aftermovie de 1 min do campeonato, com captação em dois dias e entrega em duas semanas.",
+  },
+  {
+    id: "s4", tipo: "oferta", area: "Design gráfico", titulo: "Identidade visual e peças para evento",
+    pessoa: "Duda S.", entidade: "Com-Arte Jr", valor: "a combinar",
+    detalhe: "Logo, paleta, cartaz e kit de stories. Dois ciclos de ajuste inclusos.",
+    portfolio: "duda.design",
+  },
+];
+
 const RANKING = [
   { nome: "Théo M.", saldo: 812 }, { nome: "Bia R.", saldo: 690 }, { nome: "Ana L.", saldo: 604 },
   { nome: "Igor S.", saldo: 511 }, { nome: "Cec P.", saldo: 402 },
@@ -171,6 +235,9 @@ function comprimir(file, max = 760) {
 const ESTADO_INICIAL = {
   onboarded: false,
   usuario: null,
+  servicos: [],
+  newsletter: false,
+  treinos: [],
   papel: "estudante",
   saldo: 0,
   extrato: [],
@@ -191,12 +258,98 @@ const ESTADO_INICIAL = {
       corpo: "Com o Colegiado de Economia Criativa e agências juniores. Entrada livre, sem inscrição prévia.",
       local: "Auditório, ECA-USP", quando: "hoje, 19h", organizador: "Colegiado de Economia Criativa",
       categoriaCredito: "Programativo acadêmico", autor: "núcleo de Comunicação",
+      fotos: [{ id: "f-qib", url: "/fotos/memoria.jpg" }],
       evento: { dias: 0, h: 19, local: "Auditório, ECA-USP", espacoId: "auditorio" }, confirmado: false },
     { id: 3, tag: "Ata resumida", tone: "green", meta: "há 5 dias", titulo: "Colegiado de Eventos aprovou nova regra da Praça",
       corpo: "Resumo publicado pelo núcleo de Comunicação. A regra define prioridade de uso da Praça Coberta em semanas com mais de um evento marcado.",
       organizador: "Colegiado de Eventos", autor: "núcleo de Comunicação" },
+    { id: 4, tag: "Evento", tone: "amber", meta: "Praça Coberta · sáb, 19h",
+      titulo: "Fogo na Lona: performance e circo na Prainha",
+      corpo: "Noite de performance aérea e intervenções cênicas, com abertura às 19h e performance principal às 22h.",
+      local: "Praça Coberta", quando: "sábado, 19h", organizador: "Canil",
+      categoriaCredito: "Programativo cultural", autor: "núcleo de Comunicação",
+      fotos: [{ id: "f-lona", url: "/fotos/lona.jpg" }],
+      evento: { dias: 5, h: 19, local: "Praça Coberta, ECA-USP", espacoId: "praca" }, confirmado: false },
   ],
 };
+
+// Newsletter acadêmica da comunidade, proposta por Talytha J.L. Souza.
+// Professores indicam, estudantes curam e produzem, a comunidade recebe.
+const NEWSLETTER = {
+  nome: "Além da Aula",
+  lema: "Conhecimento que circula",
+  capa: "/fotos/turma.jpg",
+  resumo:
+    "Uma newsletter colaborativa que tira as indicações de leitura de dentro de uma sala só. Professores indicam artigos, livros, pesquisas, filmes e podcasts; estudantes fazem a curadoria, o texto e o design; a comunidade inteira recebe.",
+  problema:
+    "O problema não é falta de conteúdo, é falta de circulação: referências ótimas ficam restritas à turma daquela disciplina.",
+  cadeia: [
+    { n: "01", quem: "Professor", faz: "indica artigo, pesquisa, livro ou tema" },
+    { n: "02", quem: "Estudante", faz: "faz curadoria e pesquisa complementar" },
+    { n: "03", quem: "Estudante", faz: "desenvolve texto, edição e design" },
+    { n: "04", quem: "Newsletter", faz: "organiza e apresenta o conteúdo" },
+    { n: "05", quem: "Comunidade", faz: "recebe e acessa a indicação" },
+  ],
+  frentes: [
+    { t: "Curadoria", d: "selecionar e contextualizar" },
+    { t: "Pesquisa", d: "aprofundar a indicação" },
+    { t: "Texto", d: "redigir e editar" },
+    { t: "Design", d: "identidade, direção de arte e diagramação" },
+    { t: "Divulgação", d: "criar peças para circulação" },
+  ],
+  autoria: "Talytha J.L. Souza",
+};
+
+// clubECA: clubes de leitura, fotografia e DJ que marcam encontros no Mural.
+const CLUBES = [
+  { id: "leitura", nome: "Clube de leitura", emoji: null, cor: "bg-purple-400", corTexto: "text-creme",
+    descricao: "Um livro por mês, encontro para discutir no fim.", local: "Convivência Estudos" },
+  { id: "foto", nome: "Clube de fotografia", cor: "bg-amber-400", corTexto: "text-purple-800",
+    descricao: "Saídas fotográficas e leitura de portfólio entre pares.", local: "Estúdio Áudio/Vídeo" },
+  { id: "dj", nome: "Clube de DJ", cor: "bg-purple-800", corTexto: "text-creme",
+    descricao: "Troca de set, prática de mixagem e discotecagem aberta.", local: "Praça Coberta" },
+];
+
+// ---------------------------------------------------------------
+//  Treinos da ECAtlética
+//  Cada time mantém a própria grade semanal. Os treinos do dia
+//  sobem automaticamente para o Mural.
+// ---------------------------------------------------------------
+
+const DIAS = [
+  { id: 0, curto: "dom", nome: "domingo" },
+  { id: 1, curto: "seg", nome: "segunda" },
+  { id: 2, curto: "ter", nome: "terça" },
+  { id: 3, curto: "qua", nome: "quarta" },
+  { id: 4, curto: "qui", nome: "quinta" },
+  { id: 5, curto: "sex", nome: "sexta" },
+  { id: 6, curto: "sáb", nome: "sábado" },
+];
+
+const TIMES = [
+  { id: "futsal-m", nome: "Futsal masculino", cor: "bg-purple-800", corTexto: "text-creme", resp: "Théo M." },
+  { id: "futsal-f", nome: "Futsal feminino", cor: "bg-amber-400", corTexto: "text-purple-900", resp: "Bia R." },
+  { id: "volei-misto", nome: "Vôlei misto", cor: "bg-purple-400", corTexto: "text-creme", resp: "Ana L." },
+  { id: "basquete", nome: "Basquete", cor: "bg-coral", corTexto: "text-creme", resp: "Igor S." },
+  { id: "handebol", nome: "Handebol", cor: "bg-purple-600", corTexto: "text-creme", resp: "Cec P." },
+  { id: "atletismo", nome: "Atletismo", cor: "bg-amber-400", corTexto: "text-purple-900", resp: "Duda S." },
+  { id: "xadrez", nome: "Xadrez", cor: "bg-purple-800", corTexto: "text-creme", resp: "Rafa T." },
+];
+
+const TREINOS_BASE = [
+  { id: "t1", timeId: "futsal-m", dia: 1, hora: "19:00", fim: "21:00", local: "Quadra do CEPEUSP", obs: "Levar colete e caneleira" },
+  { id: "t2", timeId: "futsal-f", dia: 1, hora: "21:00", fim: "22:30", local: "Quadra do CEPEUSP", obs: "" },
+  { id: "t3", timeId: "volei-misto", dia: 2, hora: "18:30", fim: "20:30", local: "Quadra coberta, Praça da ECA", obs: "Aberto para quem nunca jogou" },
+  { id: "t4", timeId: "basquete", dia: 2, hora: "20:30", fim: "22:00", local: "Quadra do CEPEUSP", obs: "" },
+  { id: "t5", timeId: "handebol", dia: 3, hora: "19:00", fim: "21:00", local: "Quadra do CEPEUSP", obs: "" },
+  { id: "t6", timeId: "atletismo", dia: 3, hora: "07:00", fim: "08:30", local: "Pista do CEPEUSP", obs: "Treino cedo, leve água" },
+  { id: "t7", timeId: "futsal-m", dia: 4, hora: "19:00", fim: "21:00", local: "Quadra do CEPEUSP", obs: "" },
+  { id: "t8", timeId: "volei-misto", dia: 4, hora: "21:00", fim: "22:30", local: "Quadra coberta, Praça da ECA", obs: "" },
+  { id: "t9", timeId: "xadrez", dia: 4, hora: "18:00", fim: "20:00", local: "Convivência Estudos", obs: "Tabuleiros disponíveis no local" },
+  { id: "t10", timeId: "futsal-f", dia: 5, hora: "18:00", fim: "20:00", local: "Quadra do CEPEUSP", obs: "" },
+  { id: "t11", timeId: "atletismo", dia: 6, hora: "09:00", fim: "11:00", local: "Pista do CEPEUSP", obs: "Treino longo de sábado" },
+  { id: "t12", timeId: "basquete", dia: 6, hora: "11:00", fim: "13:00", local: "Quadra do CEPEUSP", obs: "" },
+];
 
 function useEstado() {
   const [estado, setEstado] = useState(ESTADO_INICIAL);
@@ -465,7 +618,419 @@ function Login({ onEntrar }) {
   );
 }
 
-function MuralScreen({ estado, salvar, agendar, toast, irPara, verDetalhe }) {
+function NewsletterSheet({ onClose, toast, estado, salvar }) {
+  const inscrito = !!estado.newsletter;
+  const n = NEWSLETTER;
+
+  return (
+    <div className="absolute inset-0 z-30 flex items-end" style={{ background: "rgba(46,33,86,.5)" }}>
+      <div className="w-full bg-white rounded-t-3xl p-sheet max-h-[94%] overflow-y-auto">
+        <div className="relative h-[170px]">
+          <img src={n.capa} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <span className="absolute inset-0 bg-gradient-to-t from-purple-900 via-purple-900/55 to-purple-900/20" />
+          <button onClick={onClose} aria-label="Fechar"
+            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-purple-900/70 flex items-center justify-center">
+            <X size={16} className="text-creme" />
+          </button>
+          <div className="absolute inset-x-4 bottom-4">
+            <Olho className="text-amber-400 mb-1.5">newsletter ecana</Olho>
+            <h2 className="text-creme text-[34px] font-black lowercase tracking-titulo leading-[0.9]">
+              {n.nome.toLowerCase()}
+            </h2>
+            <p className="text-purple-100 text-sm font-medium mt-1">{n.lema}</p>
+          </div>
+        </div>
+
+        <div className="p-4 space-y-4">
+          <p className="text-sm text-purple-700 leading-relaxed">{n.resumo}</p>
+
+          <div className="bg-amber-100 border border-amber-300 rounded-2xl p-3">
+            <p className="text-sm text-amber-900 font-medium leading-snug">{n.problema}</p>
+          </div>
+
+          <div>
+            <Olho className="text-purple-500 mb-3">da indicação à circulação</Olho>
+            <div className="space-y-2">
+              {n.cadeia.map((c, i) => (
+                <div key={c.n} className="flex items-center gap-3 p-in" style={{ animationDelay: `${i * 50}ms` }}>
+                  <span className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center text-[11px] font-bold ${
+                    i === n.cadeia.length - 1 ? "bg-amber-400 text-purple-900" : "bg-purple-800 text-creme"}`}>
+                    {c.n}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-bold text-purple-900">{c.quem}</p>
+                    <p className="text-[11px] text-purple-500 leading-tight">{c.faz}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <Olho className="text-purple-500 mb-2">onde entrar</Olho>
+            <div className="space-y-1.5">
+              {n.frentes.map((f) => (
+                <div key={f.t} className="flex items-baseline justify-between gap-3 bg-purple-50 rounded-xl px-3 py-2">
+                  <span className="text-xs font-bold text-purple-800 shrink-0">{f.t}</span>
+                  <span className="text-[11px] text-purple-600 text-right">{f.d}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-[11px] text-purple-400 mt-2">
+              Trabalhar na newsletter gera crédito de Comunicação e Divulgação.
+            </p>
+          </div>
+
+          <Btn variante={inscrito ? "suave" : "primario"}
+            onClick={() => {
+              salvar((s) => ({ ...s, newsletter: !s.newsletter }));
+              toast(inscrito ? "Você saiu da lista" : "Pronto, você recebe a próxima edição");
+            }}
+            className="w-full flex items-center justify-center gap-2 py-3">
+            <CheckCircle2 size={16} className={inscrito ? "p-pop" : ""} />
+            {inscrito ? "você está na lista" : "quero receber"}
+          </Btn>
+
+          <p className="text-[11px] text-purple-400 text-center">
+            Proposta de {n.autoria}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TreinosSheet({ onClose, estado, salvar, toast, agendar, verDetalhe }) {
+  const hoje = new Date().getDay();
+  const [dia, setDia] = useState(hoje);
+  const [time, setTime] = useState("todos");
+  const [criando, setCriando] = useState(false);
+
+  const todos = [...TREINOS_BASE, ...(estado.treinos || [])]
+    .filter((t) => !(estado.treinosRemovidos || []).includes(t.id));
+
+  const doDia = todos
+    .filter((t) => t.dia === dia && (time === "todos" || t.timeId === time))
+    .sort((a, b) => a.hora.localeCompare(b.hora));
+
+  const porTime = (id) => TIMES.find((t) => t.id === id) || TIMES[0];
+
+  const abrirTreino = (t) => {
+    const tm = porTime(t.timeId);
+    const d = new Date();
+    const delta = (t.dia - d.getDay() + 7) % 7;
+    d.setDate(d.getDate() + delta);
+    const [hh, mm] = t.hora.split(":").map(Number);
+    d.setHours(hh, mm, 0, 0);
+    verDetalhe({
+      chave: `treino-${t.id}`, tag: "Treino", tone: "purple", titulo: tm.nome,
+      subtitulo: `${DIAS[t.dia].nome} · ${t.hora}–${t.fim}`,
+      corpo: t.obs || "Treino aberto a quem quiser aparecer. Chegue alguns minutos antes.",
+      publicadoPor: `${tm.resp} · ECAtlética`,
+      instagram: "ecatletica",
+      campos: [
+        { k: "Time", v: tm.nome },
+        { k: "Dia", v: DIAS[t.dia].nome },
+        { k: "Horário", v: `${t.hora} às ${t.fim}` },
+        { k: "Local", v: t.local },
+        { k: "Responsável", v: tm.resp },
+      ],
+      agenda: { titulo: `Treino — ${tm.nome}`, local: t.local, inicio: d, duracaoHoras: 2, descricao: t.obs || "" },
+    });
+  };
+
+  return (
+    <div className="absolute inset-0 z-30 flex items-end" style={{ background: "rgba(46,33,86,.5)" }}>
+      <div className="w-full bg-white rounded-t-3xl p-sheet max-h-[94%] overflow-y-auto">
+        <div className="relative h-[130px]">
+          <img src="/fotos/turma.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <span className="absolute inset-0 bg-gradient-to-t from-purple-900 via-purple-900/60 to-purple-900/20" />
+          <button onClick={onClose} aria-label="Fechar"
+            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-purple-900/70 flex items-center justify-center">
+            <X size={16} className="text-creme" />
+          </button>
+          <div className="absolute inset-x-4 bottom-3">
+            <Olho className="text-amber-400 mb-1">ecatlética</Olho>
+            <h2 className="text-creme text-[28px] font-black lowercase tracking-titulo leading-[0.92]">
+              treinos da semana
+            </h2>
+          </div>
+        </div>
+
+        <div className="p-4 space-y-3">
+          {/* Dias da semana */}
+          <div className="-mx-1 px-1 overflow-x-auto">
+            <div className="flex gap-1.5 w-max">
+              {DIAS.map((d) => {
+                const n = todos.filter((t) => t.dia === d.id).length;
+                const ativo = dia === d.id;
+                return (
+                  <button key={d.id} onClick={() => setDia(d.id)}
+                    className={`w-[52px] py-2 rounded-xl text-center transition-all duration-150 active:scale-95 ${
+                      ativo ? "bg-purple-800 text-creme" : "bg-purple-50 text-purple-700"}`}>
+                    <span className="block text-xs font-bold lowercase">{d.curto}</span>
+                    <span className={`block text-[10px] mt-0.5 ${ativo ? "text-amber-400" : "text-purple-400"}`}>
+                      {n === 0 ? "—" : n}
+                    </span>
+                    {d.id === hoje && (
+                      <span className={`block w-1 h-1 rounded-full mx-auto mt-1 ${ativo ? "bg-amber-400" : "bg-purple-400"}`} />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Filtro por time */}
+          <div className="-mx-1 px-1 overflow-x-auto pb-1">
+            <div className="flex gap-1.5 w-max">
+              <button onClick={() => setTime("todos")}
+                className={`px-3 py-1.5 rounded-full text-[11px] font-bold whitespace-nowrap transition-all active:scale-95 ${
+                  time === "todos" ? "bg-purple-800 text-creme" : "bg-white border border-purple-200 text-purple-700"}`}>
+                todos os times
+              </button>
+              {TIMES.map((tm) => (
+                <button key={tm.id} onClick={() => setTime(tm.id)}
+                  className={`px-3 py-1.5 rounded-full text-[11px] font-bold whitespace-nowrap transition-all active:scale-95 ${
+                    time === tm.id ? `${tm.cor} ${tm.corTexto}` : "bg-white border border-purple-200 text-purple-700"}`}>
+                  {tm.nome}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Treinos do dia escolhido */}
+          {doDia.length === 0 ? (
+            <div className="bg-purple-50 rounded-2xl p-5 text-center">
+              <p className="text-sm text-purple-600">
+                Nenhum treino {dia === hoje ? "hoje" : `na ${DIAS[dia].nome}`}
+                {time !== "todos" ? " para esse time" : ""}.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {doDia.map((t, i) => {
+                const tm = porTime(t.timeId);
+                const meu = (estado.treinos || []).some((x) => x.id === t.id);
+                return (
+                  <div key={t.id} className="flex gap-2 p-in" style={{ animationDelay: `${i * 50}ms` }}>
+                    <button onClick={() => abrirTreino(t)}
+                      className={`flex-1 min-w-0 text-left rounded-2xl p-3.5 ${tm.cor} ${tm.corTexto} transition-all duration-150 active:scale-[.98]`}>
+                      <div className="flex items-baseline justify-between gap-2">
+                        <span className="text-sm font-bold lowercase truncate">{tm.nome}</span>
+                        <span className="text-sm font-black tabular-nums shrink-0">{t.hora}</span>
+                      </div>
+                      <p className="text-[11px] opacity-80 mt-1 truncate">{t.local}</p>
+                      <p className="text-[11px] opacity-70 mt-0.5">
+                        até {t.fim} · {tm.resp}{meu ? " · você publicou" : ""}
+                      </p>
+                      {t.obs && <p className="text-[11px] opacity-90 mt-1.5 leading-snug">{t.obs}</p>}
+                    </button>
+                    {meu && (
+                      <button
+                        onClick={() => {
+                          salvar((s) => ({ ...s, treinos: (s.treinos || []).filter((x) => x.id !== t.id) }));
+                          toast("Treino removido da grade");
+                        }}
+                        aria-label="Remover treino"
+                        className="w-10 shrink-0 rounded-2xl bg-purple-50 flex items-center justify-center transition-all active:scale-90">
+                        <X size={15} className="text-purple-500" />
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {criando ? (
+            <NovoTreinoForm
+              diaInicial={dia}
+              onCancelar={() => setCriando(false)}
+              onSalvar={(t) => {
+                salvar((s) => ({ ...s, treinos: [...(s.treinos || []), t] }));
+                setCriando(false);
+                setDia(t.dia);
+                toast("Treino publicado na grade da semana");
+              }}
+            />
+          ) : (
+            <Btn variante="amarelo" onClick={() => setCriando(true)} className="w-full flex items-center justify-center gap-2 py-3">
+              <Plus size={16} /> publicar treino do meu time
+            </Btn>
+          )}
+
+          <p className="text-[11px] text-purple-400 text-center leading-snug">
+            Cada time mantém a própria grade. Os treinos de hoje aparecem no Mural sozinhos.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NovoTreinoForm({ diaInicial, onSalvar, onCancelar }) {
+  const [timeId, setTimeId] = useState("");
+  const [dia, setDia] = useState(diaInicial);
+  const [hora, setHora] = useState("19:00");
+  const [fim, setFim] = useState("21:00");
+  const [local, setLocal] = useState("");
+  const [obs, setObs] = useState("");
+
+  return (
+    <div className="border-2 border-purple-200 rounded-2xl p-3.5 space-y-3 p-in">
+      <div className="flex items-center justify-between">
+        <p className="text-sm font-bold text-purple-900">Novo treino</p>
+        <button onClick={onCancelar} aria-label="Cancelar"><X size={16} className="text-purple-400" /></button>
+      </div>
+
+      <div>
+        <p className="text-xs text-purple-600 mb-2">Time</p>
+        <div className="flex flex-wrap gap-1.5">
+          {TIMES.map((tm) => (
+            <button key={tm.id} onClick={() => setTimeId(tm.id)}
+              className={`text-[11px] px-2.5 py-1.5 rounded-full border transition-all active:scale-95 ${
+                timeId === tm.id ? `${tm.cor} ${tm.corTexto} border-transparent` : "bg-white border-purple-200 text-purple-700"}`}>
+              {tm.nome}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p className="text-xs text-purple-600 mb-2">Dia da semana</p>
+        <div className="flex gap-1.5">
+          {DIAS.map((d) => (
+            <button key={d.id} onClick={() => setDia(d.id)}
+              className={`flex-1 py-2 rounded-lg text-[11px] font-bold lowercase transition-all active:scale-95 ${
+                dia === d.id ? "bg-purple-800 text-creme" : "bg-purple-50 text-purple-700"}`}>
+              {d.curto}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex gap-2">
+        <label className="flex-1">
+          <span className="block text-xs text-purple-600 mb-1">Começa</span>
+          <input type="time" value={hora} onChange={(e) => setHora(e.target.value)}
+            className="w-full text-sm border border-purple-200 rounded-xl p-2.5 text-purple-900 focus:outline-none focus:border-purple-500 transition-colors" />
+        </label>
+        <label className="flex-1">
+          <span className="block text-xs text-purple-600 mb-1">Termina</span>
+          <input type="time" value={fim} onChange={(e) => setFim(e.target.value)}
+            className="w-full text-sm border border-purple-200 rounded-xl p-2.5 text-purple-900 focus:outline-none focus:border-purple-500 transition-colors" />
+        </label>
+      </div>
+
+      <input value={local} onChange={(e) => setLocal(e.target.value)} placeholder="Local do treino"
+        className="w-full text-sm border border-purple-200 rounded-xl p-3 text-purple-900 placeholder-purple-300 focus:outline-none focus:border-purple-500 transition-colors" />
+
+      <input value={obs} onChange={(e) => setObs(e.target.value)} placeholder="Aviso para o time (opcional)"
+        className="w-full text-sm border border-purple-200 rounded-xl p-3 text-purple-900 placeholder-purple-300 focus:outline-none focus:border-purple-500 transition-colors" />
+
+      <Btn variante={timeId && local.trim() ? "primario" : "inativo"} disabled={!timeId || !local.trim()}
+        onClick={() => onSalvar({
+          id: `t-${Date.now()}`, timeId, dia, hora, fim, local: local.trim(), obs: obs.trim(),
+        })}
+        className="w-full flex items-center justify-center gap-2 py-2.5">
+        <Send size={16} /> publicar na grade
+      </Btn>
+    </div>
+  );
+}
+
+function ClubeSheet({ onClose, onPublicar, usuario }) {
+  const [clube, setClube] = useState(null);
+  const [tema, setTema] = useState("");
+  const [quando, setQuando] = useState("");
+  const [local, setLocal] = useState("");
+  const [etapa, setEtapa] = useState("form");
+  const [prog, setProg] = useState(0);
+
+  const esc = CLUBES.find((c) => c.id === clube);
+
+  const publicar = () => {
+    setEtapa("enviando");
+    let p = 0;
+    const id = setInterval(() => {
+      p += 18; setProg(Math.min(p, 100));
+      if (p >= 100) {
+        clearInterval(id);
+        setTimeout(() => {
+          onPublicar({ clube: esc, tema, quando, local: local || esc.local, autor: usuario?.nome });
+          onClose();
+        }, 260);
+      }
+    }, 85);
+  };
+
+  return (
+    <div className="absolute inset-0 z-30 flex items-end" style={{ background: "rgba(46,33,86,.5)" }}>
+      <div className="w-full bg-white rounded-t-3xl p-4 p-sheet max-h-[94%] overflow-y-auto">
+        <div className="flex items-center justify-between mb-1">
+          <p className="text-sm font-bold text-purple-900">clubECA</p>
+          <button onClick={onClose} aria-label="Fechar"><X size={18} className="text-purple-400" /></button>
+        </div>
+        <p className="text-xs text-purple-500 mb-4">Marque um encontro do seu clube e publique no Mural.</p>
+
+        {etapa === "form" && (
+          <div className="space-y-3 p-in">
+            <div className="space-y-2">
+              {CLUBES.map((c) => (
+                <button key={c.id} onClick={() => setClube(c.id)}
+                  className={`w-full text-left rounded-2xl p-3.5 transition-all duration-150 active:scale-[.98] ${
+                    clube === c.id ? `${c.cor} ${c.corTexto}` : "bg-purple-50 text-purple-800"}`}>
+                  <p className="text-sm font-bold lowercase">{c.nome}</p>
+                  <p className={`text-[11px] mt-0.5 ${clube === c.id ? "opacity-80" : "text-purple-500"}`}>
+                    {c.descricao}
+                  </p>
+                </button>
+              ))}
+            </div>
+
+            {clube && (
+              <div className="space-y-3 p-in">
+                <input value={tema} onChange={(e) => setTema(e.target.value)}
+                  placeholder="Tema do encontro (livro, pauta, estilo…)"
+                  className="w-full text-sm border border-purple-200 rounded-xl p-3 text-purple-900 placeholder-purple-300 focus:outline-none focus:border-purple-500 transition-colors" />
+                <input value={quando} onChange={(e) => setQuando(e.target.value)}
+                  placeholder="Quando (ex: quinta, 18h)"
+                  className="w-full text-sm border border-purple-200 rounded-xl p-3 text-purple-900 placeholder-purple-300 focus:outline-none focus:border-purple-500 transition-colors" />
+                <input value={local} onChange={(e) => setLocal(e.target.value)}
+                  placeholder={`Local (sugerido: ${esc.local})`}
+                  className="w-full text-sm border border-purple-200 rounded-xl p-3 text-purple-900 placeholder-purple-300 focus:outline-none focus:border-purple-500 transition-colors" />
+              </div>
+            )}
+
+            <Btn variante={clube && tema.trim() ? "primario" : "inativo"} disabled={!clube || !tema.trim()}
+              onClick={publicar} className="w-full flex items-center justify-center gap-2 py-3">
+              <Send size={16} /> publicar encontro no mural
+            </Btn>
+            <p className="text-[11px] text-purple-400 text-center">
+              Encontro de clube vai direto ao Mural, sem passar pela fila da Comunicação.
+            </p>
+          </div>
+        )}
+
+        {etapa === "enviando" && (
+          <div className="py-8 space-y-3 p-in">
+            <p className="text-sm text-purple-900 text-center">Publicando encontro</p>
+            <Progress value={prog} />
+            <p className="text-xs text-purple-500 text-center">{prog}%</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function MuralScreen({ estado, salvar, agendar, toast, irPara, verDetalhe, abrirNewsletter, abrirClube, abrirTreinos }) {
+  const hoje = new Date().getDay();
+  const treinosHoje = [...TREINOS_BASE, ...(estado.treinos || [])]
+    .filter((t) => t.dia === hoje)
+    .sort((a, b) => a.hora.localeCompare(b.hora));
+
   const confirmar = (id) => {
     salvar((s) => ({ ...s, posts: s.posts.map((p) => (p.id === id ? { ...p, confirmado: !p.confirmado } : p)) }));
   };
@@ -491,6 +1056,74 @@ function MuralScreen({ estado, salvar, agendar, toast, irPara, verDetalhe }) {
 
   return (
     <div className="space-y-3">
+      {/* Newsletter ecana: capa com foto, abre a proposta inteira */}
+      <button onClick={abrirNewsletter}
+        className="relative w-full h-[168px] rounded-2xl overflow-hidden text-left p-in transition-all duration-200 active:scale-[.98]">
+        <img src={NEWSLETTER.capa} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <span className="absolute inset-0 bg-gradient-to-t from-purple-900 via-purple-900/60 to-purple-900/15" />
+        <Elemento nome="raios" tamanho={30} className="absolute top-3 right-3 opacity-90" />
+        <span className="absolute inset-x-4 bottom-4">
+          <span className="block text-[11px] font-bold uppercase tracking-olho text-amber-400 mb-1.5">
+            newsletter ecana
+          </span>
+          <span className="block text-creme text-[30px] font-black lowercase tracking-titulo leading-[0.92]">
+            além da aula
+          </span>
+          <span className="flex items-center gap-1.5 mt-1.5">
+            <span className="text-purple-100 text-xs font-medium">
+              {estado.newsletter ? "você recebe as edições" : "conhecimento que circula"}
+            </span>
+            <ChevronRight size={14} className="text-amber-400" />
+          </span>
+        </span>
+      </button>
+
+      {/* Treinos de hoje — sobem sozinhos da grade da ECAtlética */}
+      {treinosHoje.length > 0 && (
+        <button onClick={abrirTreinos}
+          className="w-full bg-purple-800 rounded-2xl p-4 text-left p-in transition-all duration-200 active:scale-[.98]"
+          style={{ animationDelay: "30ms" }}>
+          <div className="flex items-center justify-between mb-3">
+            <Olho className="text-amber-400">treinos de hoje</Olho>
+            <ChevronRight size={16} className="text-amber-400" />
+          </div>
+          <div className="space-y-2">
+            {treinosHoje.slice(0, 3).map((t) => {
+              const tm = TIMES.find((x) => x.id === t.timeId) || TIMES[0];
+              return (
+                <div key={t.id} className="flex items-baseline gap-2.5">
+                  <span className="text-amber-400 text-sm font-black tabular-nums shrink-0 w-[42px]">{t.hora}</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-creme text-sm font-bold lowercase leading-tight truncate">{tm.nome}</span>
+                    <span className="block text-purple-300 text-[11px] truncate">{t.local}</span>
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          {treinosHoje.length > 3 && (
+            <p className="text-purple-300 text-[11px] mt-2.5">
+              + {treinosHoje.length - 3} outro(s) treino(s) hoje
+            </p>
+          )}
+          <p className="text-purple-400 text-[11px] mt-3">ECAtlética · ver a semana inteira</p>
+        </button>
+      )}
+
+      {/* clubECA: atalho para marcar encontro */}
+      <button onClick={abrirClube}
+        className="w-full bg-amber-400 rounded-2xl p-4 flex items-center gap-3 text-left p-in transition-all duration-200 active:scale-[.98]"
+        style={{ animationDelay: "60ms" }}>
+        <Elemento nome="flor" tamanho={38} className="shrink-0" />
+        <div className="min-w-0 flex-1">
+          <p className="text-purple-900 text-[17px] font-black lowercase tracking-titulo leading-none">clubECA</p>
+          <p className="text-purple-800/75 text-[11px] mt-1 leading-snug">
+            leitura, fotografia e DJ — marque um encontro e publique aqui
+          </p>
+        </div>
+        <ChevronRight size={18} className="text-purple-800 shrink-0" />
+      </button>
+
       {estado.pedidosMural.filter((p) => p.status === "pendente").length > 0 && (
         <div className="bg-amber-50 border border-amber-200 rounded-2xl p-3 flex items-center gap-2 p-in">
           <Clock size={16} className="text-amber-700 shrink-0" />
@@ -697,8 +1330,10 @@ function CreditosScreen({ estado, salvar, toast, verDetalhe }) {
   );
 }
 
-function MercadoScreen({ estado, salvar, toast, verDetalhe }) {
+function MercadoScreen({ estado, salvar, toast, verDetalhe, abrirAnuncio }) {
   const [processando, setProcessando] = useState(null);
+  const [aba, setAba] = useState("creditos");
+  const [filtro, setFiltro] = useState("todos");
 
   const abrir = (it) => verDetalhe({
     chave: `item-${it.id}`, tag: it.camada, tone: it.tone, titulo: it.nome,
@@ -733,11 +1368,114 @@ function MercadoScreen({ estado, salvar, toast, verDetalhe }) {
     }, 900);
   };
 
+  const servicos = [...(estado.servicos || []), ...SERVICOS_EXEMPLO];
+  const servicosFiltrados = servicos.filter((s) => filtro === "todos" || s.tipo === filtro);
+
+  const abrirServico = (sv) => verDetalhe({
+    chave: `servico-${sv.id}`,
+    tag: sv.tipo === "oferta" ? "Oferece serviço" : "Procura profissional",
+    tone: sv.tipo === "oferta" ? "green" : "amber",
+    titulo: sv.titulo, subtitulo: sv.valor,
+    corpo: sv.detalhe,
+    publicadoPor: `${sv.pessoa}${sv.entidade ? ` · ${sv.entidade}` : ""}`,
+    instagram: sv.portfolio,
+    campos: [
+      { k: "Área", v: sv.area },
+      { k: "Valor", v: sv.valor },
+      { k: "Quem publicou", v: sv.pessoa },
+      { k: "Entidade", v: sv.entidade },
+      { k: "Pagamento", v: "combinado direto entre as partes" },
+    ],
+  });
+
+  if (aba === "servicos") {
+    return (
+      <div className="space-y-3">
+        <div className="grid grid-cols-2 gap-2 p-in">
+          <button onClick={() => setAba("creditos")}
+            className="rounded-xl py-2.5 text-sm font-bold bg-white border border-purple-200 text-purple-700 transition-all active:scale-[.97]">
+            trocas por crédito
+          </button>
+          <button className="rounded-xl py-2.5 text-sm font-bold bg-purple-800 text-creme">
+            balcão de serviços
+          </button>
+        </div>
+
+        <div className="relative rounded-2xl overflow-hidden h-[132px] p-in">
+          <img src="/fotos/proj.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <span className="absolute inset-0 bg-gradient-to-t from-purple-900 via-purple-900/60 to-purple-900/20" />
+          <div className="absolute inset-x-4 bottom-3">
+            <Olho className="text-amber-400 mb-1">trabalho remunerado</Olho>
+            <h2 className="text-creme text-[26px] font-black lowercase tracking-titulo leading-[0.92]">
+              quem faz, aparece aqui
+            </h2>
+          </div>
+        </div>
+
+        <div className="bg-amber-100 border border-amber-300 rounded-2xl p-3 flex gap-2 p-in">
+          <Briefcase size={16} className="text-amber-800 shrink-0 mt-0.5" />
+          <p className="text-xs text-amber-900 leading-snug">
+            Aqui é dinheiro, não crédito. O praIA só publica o anúncio: valor, contrato e
+            pagamento são combinados direto entre vocês.
+          </p>
+        </div>
+
+        <div className="flex gap-2">
+          {[
+            { id: "todos", r: "tudo" },
+            { id: "oferta", r: "ofereço" },
+            { id: "procura", r: "procuro" },
+          ].map((f) => (
+            <button key={f.id} onClick={() => setFiltro(f.id)}
+              className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all active:scale-95 ${
+                filtro === f.id ? "bg-purple-800 text-creme" : "bg-white border border-purple-200 text-purple-700"}`}>
+              {f.r}
+            </button>
+          ))}
+        </div>
+
+        {servicosFiltrados.length === 0 ? (
+          <Card><p className="text-sm text-purple-500">Nenhum anúncio nesse filtro ainda.</p></Card>
+        ) : servicosFiltrados.map((sv, i) => (
+          <Card key={sv.id} delay={i * 55}>
+            <button onClick={() => abrirServico(sv)} className="w-full text-left transition-all duration-150 active:scale-[.99]">
+              <div className="flex items-center justify-between mb-2">
+                <Pill tone={sv.tipo === "oferta" ? "green" : "amber"}>
+                  {sv.tipo === "oferta" ? "oferece" : "procura"}
+                </Pill>
+                <span className="text-[11px] text-purple-500">{sv.area}</span>
+              </div>
+              <p className="text-sm font-bold text-purple-900 leading-snug">{sv.titulo}</p>
+              <p className="text-sm text-purple-600 mt-1">{sv.valor}</p>
+              <p className="text-[11px] text-purple-400 mt-1.5">
+                {sv.pessoa}{sv.entidade ? ` · ${sv.entidade}` : ""}
+              </p>
+            </button>
+          </Card>
+        ))}
+
+        <Btn variante="amarelo" onClick={abrirAnuncio} className="w-full flex items-center justify-center gap-2 py-3">
+          <Plus size={16} /> anunciar meu serviço
+        </Btn>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-3">
-      <div className="bg-purple-50 rounded-2xl p-3 flex items-center justify-between p-in">
-        <span className="text-sm text-purple-700">Seu saldo</span>
-        <span className="text-sm font-medium text-purple-900">{estado.saldo} créditos</span>
+      <div className="grid grid-cols-2 gap-2 p-in">
+        <button className="rounded-xl py-2.5 text-sm font-bold bg-purple-800 text-creme">
+          trocas por crédito
+        </button>
+        <button onClick={() => setAba("servicos")}
+          className="rounded-xl py-2.5 text-sm font-bold bg-white border border-purple-200 text-purple-700 transition-all active:scale-[.97]">
+          balcão de serviços
+        </button>
+      </div>
+
+      <div className="bg-purple-800 rounded-2xl p-4 flex items-center justify-between p-in">
+        <Olho className="text-amber-400">seu saldo</Olho>
+        <span className="text-creme text-2xl font-black tracking-titulo tabular-nums">{estado.saldo}</span>
       </div>
 
       {CATALOGO.map((it, i) => {
@@ -899,7 +1637,9 @@ function CheckinSheet({ espaco, onClose, onEnviar }) {
   );
 }
 
-function EspacosScreen({ estado, salvar, agendar, toast, focoEspaco, verDetalhe }) {
+function EspacosScreen({ estado, salvar, agendar, toast, focoEspaco, verDetalhe, abrirTreinos }) {
+  const hojeDia = new Date().getDay();
+  const treinosHoje = [...TREINOS_BASE, ...(estado.treinos || [])].filter((t) => t.dia === hojeDia);
   const [sel, setSel] = useState(focoEspaco || "praca");
   const [sheet, setSheet] = useState(false);
   const pronto = useLazy(sel, 380);
@@ -928,35 +1668,100 @@ function EspacosScreen({ estado, salvar, agendar, toast, focoEspaco, verDetalhe 
     toast(`Check-in enviado · ${esp.validador} vai validar`);
   };
 
+  const ocupacao = (id) =>
+    (agendaBase[id]?.length || 0) + estado.reservas.filter((r) => r.espacoId === id).length;
+
   return (
     <div className="space-y-3">
-      <div className="grid grid-cols-2 gap-2">
-        {ESPACOS.map((e, i) => (
-          <button key={e.id} onClick={() => setSel(e.id)}
-            className={`text-left rounded-2xl p-3 border p-in transition-all duration-150 active:scale-[.98] ${
-              sel === e.id ? "bg-purple-800 border-purple-800" : "bg-white border-purple-100"}`}
-            style={{ animationDelay: `${i * 45}ms` }}>
-            <p className={`text-sm font-medium ${sel === e.id ? "text-white" : "text-purple-900"}`}>{e.nome}</p>
-            <p className={`text-[11px] mt-0.5 ${sel === e.id ? "text-purple-200" : "text-purple-500"}`}>{e.area}</p>
-          </button>
-        ))}
+      {/* Tiras horizontais com foto: a escolha do espaço vira navegação visual */}
+      <div className="-mx-3 px-3 overflow-x-auto pb-1">
+        <div className="flex gap-2 w-max">
+          {ESPACOS.map((e, i) => {
+            const ativo = sel === e.id;
+            const n = ocupacao(e.id);
+            return (
+              <button key={e.id} onClick={() => setSel(e.id)}
+                className={`relative w-[132px] h-[92px] rounded-2xl overflow-hidden shrink-0 text-left p-in transition-all duration-200 active:scale-[.97] ${
+                  ativo ? "ring-[3px] ring-amber-400" : "opacity-80"}`}
+                style={{ animationDelay: `${i * 45}ms` }}>
+                <img src={e.foto} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                <span className="absolute inset-0 bg-gradient-to-t from-purple-900 via-purple-900/45 to-transparent" />
+                {n > 0 && (
+                  <span className="absolute top-2 right-2 bg-amber-400 text-purple-900 text-[10px] font-bold rounded-full px-1.5 py-0.5">
+                    {n}
+                  </span>
+                )}
+                <span className="absolute left-2.5 right-2.5 bottom-2">
+                  <span className="block text-creme text-[13px] font-bold leading-tight">{e.nome}</span>
+                  <span className="block text-purple-200 text-[10px]">{e.area}</span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {!pronto ? <Skeleton rows={1} /> : (
+      {!pronto ? <Skeleton rows={2} /> : (
         <>
-          <Card>
-            <div className="flex items-center gap-2 mb-1">
-              <ShieldCheck size={16} className="text-purple-600" />
-              <p className="text-sm text-purple-900">Validador: {espaco.validador}</p>
+          {/* Capa do espaço selecionado */}
+          <div className="relative rounded-2xl overflow-hidden h-[190px] p-in">
+            <img src={espaco.foto} alt={espaco.nome} className="absolute inset-0 w-full h-full object-cover" />
+            <span className="absolute inset-0 bg-gradient-to-t from-purple-900 via-purple-900/55 to-purple-900/10" />
+            <div className="absolute inset-x-4 bottom-4">
+              <Olho className="text-amber-400 mb-1.5">{espaco.cobertura} · {espaco.capacidade}</Olho>
+              <h2 className="text-creme text-[30px] font-black lowercase tracking-titulo leading-[0.92]">
+                {espaco.nome}
+              </h2>
+              <p className="text-purple-100 text-xs mt-1.5 leading-snug">{espaco.resumo}</p>
             </div>
-            <p className="text-xs text-purple-500 mb-3">Mandato de 1 ano · indicado pela entidade</p>
-            <div className="flex gap-2">
-              <Btn variante="primario" onClick={() => setSheet(true)} className="flex-1 flex items-center justify-center gap-2 py-2.5">
-                <QrCode size={16} /> Check-in
-              </Btn>
-              <Btn variante="amarelo" onClick={pedirReserva} className="flex-1 py-2.5">
-                Solicitar reserva
-              </Btn>
+            <Elemento nome="faisca" tamanho={26} className="absolute top-3 right-3 drop-shadow" />
+          </div>
+
+          {/* Ações grandes, lado a lado */}
+          <div className="grid grid-cols-2 gap-2">
+            <button onClick={() => setSheet(true)}
+              className="rounded-2xl bg-purple-800 text-creme p-4 text-left transition-all duration-150 active:scale-[.97] p-in">
+              <QrCode size={22} className="mb-2 text-amber-400" />
+              <p className="text-sm font-bold lowercase">fazer check-in</p>
+              <p className="text-[11px] text-purple-300 leading-tight mt-0.5">trabalhei aqui, quero crédito</p>
+            </button>
+            <button onClick={pedirReserva}
+              className="rounded-2xl bg-amber-400 text-purple-900 p-4 text-left transition-all duration-150 active:scale-[.97] p-in"
+              style={{ animationDelay: "60ms" }}>
+              <Calendar size={22} className="mb-2" />
+              <p className="text-sm font-bold lowercase">reservar</p>
+              <p className="text-[11px] text-purple-800/70 leading-tight mt-0.5">quero usar numa data</p>
+            </button>
+          </div>
+
+          {/* Grade de treinos da ECAtlética */}
+          <button onClick={abrirTreinos}
+            className="w-full bg-purple-400 rounded-2xl p-4 flex items-center gap-3 text-left p-in transition-all duration-200 active:scale-[.98]"
+            style={{ animationDelay: "30ms" }}>
+            <Elemento nome="raios" tamanho={34} className="shrink-0" />
+            <div className="min-w-0 flex-1">
+              <p className="text-creme text-[17px] font-black lowercase tracking-titulo leading-none">
+                treinos da semana
+              </p>
+              <p className="text-purple-100 text-[11px] mt-1 leading-snug">
+                {treinosHoje.length > 0
+                  ? `${treinosHoje.length} treino(s) hoje · grade completa da ECAtlética`
+                  : "grade completa dos times da ECAtlética"}
+              </p>
+            </div>
+            <ChevronRight size={18} className="text-creme shrink-0" />
+          </button>
+
+          {/* Quem cuida do espaço */}
+          <Card delay={40}>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center shrink-0">
+                <ShieldCheck size={18} className="text-purple-700" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-sm text-purple-900 truncate">{espaco.validador}</p>
+                <p className="text-[11px] text-purple-500">valida os check-ins · mandato de 1 ano</p>
+              </div>
             </div>
           </Card>
 
@@ -1738,6 +2543,117 @@ function EmergenciaSheet({ onClose, abrirDenuncia, abrirAchados }) {
   );
 }
 
+function AnuncioServicoSheet({ onClose, onPublicar, usuario }) {
+  const [tipo, setTipo] = useState("oferta");
+  const [area, setArea] = useState("");
+  const [titulo, setTitulo] = useState("");
+  const [valor, setValor] = useState("");
+  const [detalhe, setDetalhe] = useState("");
+  const [portfolio, setPortfolio] = useState("");
+  const [etapa, setEtapa] = useState("form");
+  const [prog, setProg] = useState(0);
+
+  const publicar = () => {
+    setEtapa("enviando");
+    let p = 0;
+    const id = setInterval(() => {
+      p += 16; setProg(Math.min(p, 100));
+      if (p >= 100) {
+        clearInterval(id);
+        setTimeout(() => {
+          onPublicar({
+            id: `s${Date.now()}`, tipo, area: area || "Outro", titulo,
+            valor: valor.trim() || "a combinar", detalhe,
+            portfolio: portfolio.replace(/^@/, "").trim() || null,
+            pessoa: usuario?.nome || "você",
+            entidade: usuario?.vinculos?.[0]?.nome || "",
+          });
+          onClose();
+        }, 280);
+      }
+    }, 85);
+  };
+
+  return (
+    <div className="absolute inset-0 z-30 flex items-end" style={{ background: "rgba(46,33,86,.5)" }}>
+      <div className="w-full bg-white rounded-t-3xl p-4 p-sheet max-h-[94%] overflow-y-auto">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2">
+            <Briefcase size={18} className="text-purple-700" />
+            <p className="text-sm font-bold text-purple-900">Balcão de serviços</p>
+          </div>
+          <button onClick={onClose} aria-label="Fechar"><X size={18} className="text-purple-400" /></button>
+        </div>
+
+        {etapa === "form" && (
+          <div className="space-y-3 p-in">
+            <div className="grid grid-cols-2 gap-2">
+              <Btn variante={tipo === "oferta" ? "primario" : "suave"} onClick={() => setTipo("oferta")} className="py-2.5">
+                ofereço um serviço
+              </Btn>
+              <Btn variante={tipo === "procura" ? "primario" : "suave"} onClick={() => setTipo("procura")} className="py-2.5">
+                procuro alguém
+              </Btn>
+            </div>
+
+            <div>
+              <p className="text-xs text-purple-600 mb-2">Área</p>
+              <div className="flex flex-wrap gap-1.5">
+                {AREAS_SERVICO.map((a) => (
+                  <button key={a} onClick={() => setArea(a)}
+                    className={`text-[11px] px-2.5 py-1.5 rounded-full border transition-all active:scale-95 ${
+                      area === a ? "bg-purple-800 text-creme border-purple-800" : "bg-white border-purple-200 text-purple-700"}`}>
+                    {a}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <input value={titulo} onChange={(e) => setTitulo(e.target.value)}
+              placeholder={tipo === "oferta" ? "O que você faz" : "O que você precisa"}
+              className="w-full text-sm border border-purple-200 rounded-xl p-3 text-purple-900 placeholder-purple-300 focus:outline-none focus:border-purple-500 transition-colors" />
+
+            <input value={valor} onChange={(e) => setValor(e.target.value)}
+              placeholder="Valor (ex: R$ 250 por evento, ou a combinar)"
+              className="w-full text-sm border border-purple-200 rounded-xl p-3 text-purple-900 placeholder-purple-300 focus:outline-none focus:border-purple-500 transition-colors" />
+
+            <textarea rows={3} value={detalhe} onChange={(e) => setDetalhe(e.target.value)}
+              placeholder="Detalhe o que está incluso, prazo e condições"
+              className="w-full text-sm border border-purple-200 rounded-xl p-3 text-purple-900 placeholder-purple-300 focus:outline-none focus:border-purple-500 transition-colors" />
+
+            <div className="flex items-center gap-2 border border-purple-200 rounded-xl px-3">
+              <Instagram size={16} className="text-purple-400 shrink-0" />
+              <input value={portfolio} onChange={(e) => setPortfolio(e.target.value)} placeholder="portfólio no instagram (opcional)"
+                className="flex-1 text-sm py-3 text-purple-900 placeholder-purple-300 focus:outline-none bg-transparent" />
+            </div>
+
+            <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 flex gap-2">
+              <AlertTriangle size={15} className="text-amber-700 shrink-0 mt-0.5" />
+              <p className="text-xs text-amber-800 leading-snug">
+                Combine valor, prazo e pagamento direto com a outra pessoa. O praIA publica o
+                anúncio, mas não intermedeia nem garante o pagamento.
+              </p>
+            </div>
+
+            <Btn variante={titulo.trim() ? "primario" : "inativo"} disabled={!titulo.trim()} onClick={publicar}
+              className="w-full flex items-center justify-center gap-2 py-3">
+              <Send size={16} /> publicar anúncio
+            </Btn>
+          </div>
+        )}
+
+        {etapa === "enviando" && (
+          <div className="py-8 space-y-3 p-in">
+            <p className="text-sm text-purple-900 text-center">Publicando anúncio</p>
+            <Progress value={prog} />
+            <p className="text-xs text-purple-500 text-center">{prog}%</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function BoasVindas({ onConcluir }) {
   const [passo, setPasso] = useState(0);
 
@@ -1785,7 +2701,7 @@ function BoasVindas({ onConcluir }) {
 
   return (
     <div className={`h-full flex flex-col px-7 py-8 transition-colors duration-500 ${atual.fundo}`}>
-      <Olho className={`${atual.texto_cor} opacity-70`}>amorECA · calc 2026</Olho>
+      <Olho className={`${atual.texto_cor} opacity-70`}>comunidade ecana</Olho>
 
       <div className="flex-1 flex flex-col justify-center">
         <div key={passo} className="mb-7 p-pop">{atual.icone}</div>
@@ -2107,6 +3023,28 @@ export default function App() {
     }
   };
 
+  const publicarClube = ({ clube, tema, quando, local, autor }) => {
+    salvar((s) => ({
+      ...s,
+      posts: [{
+        id: Date.now(), tag: "clubECA", tone: "amber",
+        meta: quando || "a combinar",
+        titulo: `${clube.nome}: ${tema}`,
+        corpo: `${clube.descricao} Encontro aberto a quem quiser aparecer.`,
+        local, quando, organizador: clube.nome, autor,
+        categoriaCredito: "Formação",
+      }, ...s.posts],
+    }));
+    toast("Encontro publicado no Mural");
+    setTab("mural");
+  };
+
+  const publicarServico = (anuncio) => {
+    salvar((s) => ({ ...s, servicos: [anuncio, ...(s.servicos || [])] }));
+    toast("Anúncio publicado no balcão de serviços");
+    setTab("mercado");
+  };
+
   const registrarDenuncia = (protocolo, tipo) => {
     salvar((s) => ({ ...s, protocolos: [{ protocolo, tipo, status: "em apuração" }, ...s.protocolos] }));
   };
@@ -2175,10 +3113,10 @@ export default function App() {
   const conteudo = () => {
     if (estado.papel === "validador") return <ValidadorScreen estado={estado} salvar={salvar} toast={toast} />;
     if (bloqueada) return <BlockedScreen label={TABS.find((t) => t.id === tab).label} />;
-    if (tab === "mural") return <MuralScreen estado={estado} salvar={salvar} agendar={agendar} toast={toast} irPara={irPara} verDetalhe={verDetalhe} />;
+    if (tab === "mural") return <MuralScreen estado={estado} salvar={salvar} agendar={agendar} toast={toast} irPara={irPara} verDetalhe={verDetalhe} abrirNewsletter={() => setSheet("newsletter")} abrirClube={() => setSheet("clube")} abrirTreinos={() => setSheet("treinos")} />;
     if (tab === "creditos") return <CreditosScreen estado={estado} salvar={salvar} toast={toast} verDetalhe={verDetalhe} />;
-    if (tab === "mercado") return <MercadoScreen estado={estado} salvar={salvar} toast={toast} verDetalhe={verDetalhe} />;
-    if (tab === "espacos") return <EspacosScreen estado={estado} salvar={salvar} agendar={agendar} toast={toast} focoEspaco={foco} verDetalhe={verDetalhe} />;
+    if (tab === "mercado") return <MercadoScreen estado={estado} salvar={salvar} toast={toast} verDetalhe={verDetalhe} abrirAnuncio={() => setSheet("servico")} />;
+    if (tab === "espacos") return <EspacosScreen estado={estado} salvar={salvar} agendar={agendar} toast={toast} focoEspaco={foco} verDetalhe={verDetalhe} abrirTreinos={() => setSheet("treinos")} />;
     if (tab === "rede") return <RedeScreen estado={estado} salvar={salvar} agendar={agendar} toast={toast} verDetalhe={verDetalhe} />;
     return <PerfilScreen estado={estado} salvar={salvar} agendar={agendar} toast={toast} verDetalhe={verDetalhe} abrirComposer={() => setSheet("post")} />;
   };
@@ -2244,6 +3182,19 @@ export default function App() {
             toast={toast} irPara={irPara} onClose={() => setDetalhe(null)} />
         )}
         {sheet === "post" && <ComposerSheet onClose={() => setSheet(null)} onPublicar={publicar} />}
+        {sheet === "newsletter" && (
+          <NewsletterSheet onClose={() => setSheet(null)} toast={toast} estado={estado} salvar={salvar} />
+        )}
+        {sheet === "treinos" && (
+          <TreinosSheet onClose={() => setSheet(null)} estado={estado} salvar={salvar}
+            toast={toast} agendar={agendar} verDetalhe={verDetalhe} />
+        )}
+        {sheet === "clube" && (
+          <ClubeSheet onClose={() => setSheet(null)} usuario={estado.usuario} onPublicar={publicarClube} />
+        )}
+        {sheet === "servico" && (
+          <AnuncioServicoSheet onClose={() => setSheet(null)} usuario={estado.usuario} onPublicar={publicarServico} />
+        )}
         {sheet === "emergencia" && (
           <EmergenciaSheet onClose={() => setSheet(null)}
             abrirDenuncia={() => setSheet("denuncia")} abrirAchados={() => setSheet("achados")} />
@@ -2268,7 +3219,6 @@ export default function App() {
       <div className="flex items-center gap-2 opacity-60 mt-1">
         <Elemento nome="faisca" tamanho={14} />
         <Marca largura={88} cor="roxo" />
-        <span className="text-[11px] font-medium text-purple-800">calc 2026</span>
       </div>
     </div>
   );

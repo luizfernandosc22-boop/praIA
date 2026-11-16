@@ -98,7 +98,20 @@ Arquivos da marca em `public/marca/`:
   gráficos das peças. Use `<Elemento nome="faisca" tamanho={40} />`.
 - `icone.svg` — ícone do app na aba do navegador e na tela inicial do celular.
 
+Fotos da comunidade em `public/fotos/` — usadas como capa dos espaços, da
+newsletter e dos eventos do Mural.
+
 ---
+
+## Treinos da ECAtlética
+
+A grade semanal dos times fica em `TIMES` e `TREINOS_BASE`, no topo do
+`src/App.jsx`. Cada time tem nome, cor e responsável; cada treino tem dia da
+semana (0 = domingo), horário de início e fim, local e um aviso opcional.
+
+Os treinos do dia sobem sozinhos para o Mural — não há nada a publicar
+manualmente. Treinos criados dentro do app ficam no aparelho de quem criou,
+até existir backend.
 
 ## Como os dados funcionam hoje
 
